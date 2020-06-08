@@ -1,0 +1,26 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "description": "learn node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiveLucky/node-demo.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "fiveLucky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fiveLucky/node-demo/issues"
+  },
+  "homepage": "https://github.com/fiveLucky/node-demo#readme",
+  "dependencies": {
+    "eslint": "^7.2.0"
+  }
+}
