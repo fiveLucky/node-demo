@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <div id="show"></div>
+    <button id="send">send</button>
+    <script>
+      const show = document.getElementById("show");
+      const send = document.getElementById("send");
+      send.onclick = function () {
+        fetch("/getJsonData", { method: "post", body: JSON.stringify({ name: "123", value: 321 }) })
+          .then((res) => res.json())
+          .then((res) => {
+            show.innerHTML = JSON.stringify(res);
+          });
+      };
+    </script>
+  </body>
+</html>
