@@ -1,14 +1,14 @@
 const http = require("http");
 
 const { bodyParser } = require("./bodyParser.js");
-function start(routesFn) {
+function start(routes) {
   const server = http.createServer(async (req, res) => {
     await bodyParser(req, res);
     const ctx = {
       req,
       res,
     };
-    routesFn(ctx);
+    routes(ctx);
   });
 
   server.listen(5000);

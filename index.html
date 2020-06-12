@@ -4,13 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <style lang="css">
+      img {
+        width: 200px;
+      }
+    </style>
   </head>
   <body>
     <div id="show"></div>
     <button id="send">send</button>
+    <div>
+      <img src="" alt="" srcset="" id="img" />
+    </div>
+    <div>
+      <textarea name="" id="text" cols="30" rows="10"></textarea>
+    </div>
+
     <script>
       const show = document.getElementById("show");
       const send = document.getElementById("send");
+      const img = document.getElementById("img");
+      const text = document.getElementById("text");
       send.onclick = function () {
         fetch("/getJsonData", { method: "post", body: JSON.stringify({ name: "123", value: 321 }) })
           .then((res) => res.json())
@@ -18,6 +32,34 @@
             show.innerHTML = JSON.stringify(res);
           });
       };
+
+      fetch("/getImg")
+        .then((res) => res.arrayBuffer())
+        .then((res) => {
+          // buffer => base64
+          var binary = "";
+          var bytes = new Uint8Array(res);
+          var len = bytes.byteLength;
+          for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+          }
+          const base64Url = window.btoa(binary);
+
+          img.src = `data:image/jpeg;base64,${base64Url}`;
+        });
+      fetch("/getJs")
+        .then((res) => res.arrayBuffer())
+        .then((res) => {
+          // buffer => base64
+          var binary = "";
+          var bytes = new Uint8Array(res);
+          var len = bytes.byteLength;
+          for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+          }
+          console.log(binary);
+          console.log(res);
+        });
     </script>
   </body>
 </html>
