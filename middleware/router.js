@@ -7,6 +7,7 @@ const url = require("url");
 
 class Router {
   constructor() {
+    // 先支持单一控制器
     this.routes = {};
   }
   get(pathname, handler) {
