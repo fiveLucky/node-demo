@@ -1,14 +1,11 @@
+const dns = require("../module/dns");
+
 module.exports = {
-  post(ctx) {
+  async post(ctx) {
     const { res, req } = ctx;
+    const address = await dns("www.baidu.com");
     if (req.body.name) {
-      res.write(
-        JSON.stringify({
-          name: "node-demo",
-          size: 50,
-          time: Date.now(),
-        })
-      );
+      res.write(JSON.stringify(address));
     } else {
       res.write("缺少参数");
     }
