@@ -3,12 +3,16 @@ const http = require("http");
 const { bodyParser } = require("./bodyParser.js");
 function start(routes) {
   const server = http.createServer(async (req, res) => {
-    await bodyParser(req, res);
-    const ctx = {
-      req,
-      res,
-    };
-    routes(ctx);
+    try {
+      await bodyParser(req, res);
+      const ctx = {
+        req,
+        res,
+      };
+      routes(ctx);
+    } catch (error) {
+      console.log("*********** error ***********", error);
+    }
   });
 
   server.listen(5000);
