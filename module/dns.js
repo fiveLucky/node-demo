@@ -12,5 +12,6 @@ module.exports = function (domain) {
         res(address);
       }
     });
+    // dns.resolve6  解析ipv6
   });
 };
